@@ -29,43 +29,28 @@ function start_application() {
     logger.textContent = '!hello I am Lab42';
     // logger.textContent += logger.textContent + 'load\n';
 
-
     fetchJSON('./_app/data/payload.json', '_content');
 
-
-    // let payload = new Payload(json)
-    // payload.fetchJson().then(__result => {
-    //     let __body = document.getElementById(view);
-    //     __body.textContent = __result.payload.body;
-    // });
-
-
-
-    // page('/', () => {
-    //     fetch('./resources/data/payload.json', 'body')
-    // });
-
-    // page('/mikka', () => {
-    //     fetch('./resources/data/mikka.json', 'body')
-    // });
-
-    // page('/zorro', () => {
-    //     fetch('./resources/data/zorro.json', 'body')
-    // });
-
-    // page('/kontakt', () => {
-    //     fetch('./resources/data/kontakt.json', 'body')
-    // });
-
-    // page('*', () => {
-    //     fetch('./resources/data/404.json', 'body')
-    // });
-
-    // // fetch payload and send it to a html #id
-
-
-    //
-    // page.start()
-
 }
+
+
+
+document.addEventListener('click', function (event) {
+
+    // If the clicked element doesn't have the right selector, bail
+    if (!event.target.matches('.menu')) return;
+
+    // Don't follow the link
+    event.preventDefault();
+
+    let path = event.target.getAttribute("href");
+    fetchJSON('./_app/data/' + path + '.json', '_content');
+
+    // Log the clicked element in the console
+    console.log(event.target.getAttribute("href"));
+
+}, false);
+
+
+
 
