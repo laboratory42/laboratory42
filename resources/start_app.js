@@ -13,8 +13,8 @@ Promise.all([documentResolve, windowResolve]).then(start_application);
 
 
 function include_templates() {
-    fetchPartial('resources/partials/_navigation.html', '#navigation');
-    fetchPartial('resources/partials/_footer.html', '#footer');
+    // fetchPartial('resources/partials/_navigation.html', '#navigation');
+    // fetchPartial('resources/partials/_footer.html', '#footer');
     fetchPartial('content.html', '#content');
 }
 
