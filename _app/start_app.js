@@ -26,8 +26,18 @@ function start_application() {
     include_templates();
 
     const logger = document.querySelector('#debug');
-    logger.textContent = '! h e l l o !  I my name is L A B 4 2';
+    logger.textContent = '!hello I am Lab42';
     // logger.textContent += logger.textContent + 'load\n';
+
+
+    fetchJSON('./_app/data/payload.json', '_content');
+
+
+    // let payload = new Payload(json)
+    // payload.fetchJson().then(__result => {
+    //     let __body = document.getElementById(view);
+    //     __body.textContent = __result.payload.body;
+    // });
 
 
 
