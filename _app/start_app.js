@@ -13,9 +13,9 @@ Promise.all([documentResolve, windowResolve]).then(start_application);
 
 
 function include_templates() {
-    fetchPartial('resources/partials/_navigation.html', '#navigation');
-    fetchPartial('resources/partials/_footer.html', '#footer');
-    fetchPartial('resources/partials/_content.html', '#content');
+    fetchPartial('_app/partials/_navigation.html', '#navigation');
+    fetchPartial('_app/partials/_footer.html', '#footer');
+    fetchPartial('_app/partials/_content.html', '#content');
 }
 
 

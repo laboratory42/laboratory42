@@ -1,7 +1,7 @@
 'use strict';
 /**
  * 
- * fetch json data from url or from local file
+ * fetch json data or html partial from url or from local file
  *  
  */
 class Payload {

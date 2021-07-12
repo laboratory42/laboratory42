@@ -1,0 +1,6 @@
+{
+	"payload": {
+		"title": "hello world",
+		"body": "I am the content from payload.json"
+	}
+}
