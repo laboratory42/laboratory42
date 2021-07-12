@@ -6,14 +6,14 @@
  */
 class Payload {
 
-    constructor(_json) {
-        this._json = _json
+    constructor(__data) {
+        this.__data = __data
     }
 
     // get json response
     fetchJson() {
         return new Promise((resolve, reject) => {
-            fetch(this._json).then(function (response) {
+            fetch(this.__data).then(function (response) {
                 if (response.status == 200) {
                     return response.json();
                 } else {
@@ -45,7 +45,7 @@ class Payload {
     // get text response
     fetchHtml(partial) {
         return new Promise((resolve, reject) => {
-            fetch(this._json).then(function (response) {
+            fetch(this.__data).then(function (response) {
 
                 // ? https://github.com/github/fetch
                 credentials: 'same-origin'
