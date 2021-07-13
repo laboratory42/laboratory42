@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": true
+    },
+    "lib": [
+        "ES5",
+        "ES2015",
+        "DOM",
+        "ScriptHost"
+    ]
+    "files": [
+        "payload__.ts"
+    ]
+}
