@@ -35,6 +35,51 @@ function start_application() {
 
 
 
+
+
+
+
+
+
+////// 
+
+///// 
+
+let home = `<h1>I am home Page</h1>`;
+let hire = `<h1>I am hire Page</h1>`;
+let work = `<h1>I am work Page.</h1>`;
+
+let _nav = document.getElementById('navigation');
+// let _buttons = _nav.children;
+// console.log(_buttons);
+
+// _buttons.forEach( 
+//     // function (_butt, index) {
+//     //     console.log(index);
+//     //     console.log(_butt);
+//     // }
+// );
+
+console.log('_____');
+// const _nav = document.getElementById('navigation');
+
+const parent = _nav;
+
+// console.log(parent);
+
+[_nav.children].forEach(child => {
+  console.log('X');
+});
+
+console.log('_____');
+
+const routes = {
+  '/home' : home,
+  '/hire' : hire,
+  '/work' : work
+};
+
+
 document.addEventListener('click', function (event) {
 
     // If the clicked element doesn't have the right selector, bail
@@ -44,7 +89,33 @@ document.addEventListener('click', function (event) {
     event.preventDefault();
 
     let path = event.target.getAttribute("href");
-    fetchJSON('./_app/data/' + path + '.json', '_content');
+
+            //////
+            const rootDiv2 = document.getElementById('_content');
+            rootDiv2.innerHTML = routes[window.location.pathname];
+
+            const onNavigate = (pathname) => {
+            window.history.pushState(
+            {},
+            pathname,
+            window.location.origin + pathname
+            )
+            rootDiv2.innerHTML = routes[pathname]
+            console.log(routes[pathname] );
+            }
+
+            const onNavClick = (pathname) => {
+            window.history.pushState({}, pathname, window.location.origin + pathname);
+            rootDiv2.innerHTML = routes[pathname];
+            }
+
+            window.onpopstate = () => {
+            rootDiv2.innerHTML = routes[window.location.pathname]
+            }
+            //////
+
+    
+    // fetchJSON('./_app/data/' + path + '.json', '_content');
 
     // Log the clicked element in the console
     console.log(event.target.getAttribute("href"));
