@@ -5,13 +5,44 @@
  *  
  */
 // https://basarat.gitbook.io/typescript/future-javascript/promise
+
+type FetchParams = Parameters<typeof window.fetch>
+type FetchInput = FetchParams[0]
+type FetchInit = FetchParams[1]
+
+const fetchJson = <T>(input: FetchInput, init: FetchInit = {}): Promise<T> => {
+  return window
+    .fetch(input, {
+      ...init,
+      // ensure cookies are always passed
+      credentials: 'same-origin',
+
+      headers: {
+        ...init.headers,
+
+        // always include this header
+        'Content-Type': 'application/json',
+      },
+    })
+    .then((response) => {
+      // Throw error for error status codes (400+)
+      if (!response.ok) {
+        throw new Error(resp.statusText)
+      }
+
+      return response
+    })
+    .then((resp) => response.json() as Promise<T>)
+}
+
+
+
+
 class Payload {
 
     private __json: string;
     result: string;
     number: number;
-
-    // const fetch = require("node-fetch");
 
     constructor(filename: string) {
         this.__json = filename
@@ -19,20 +50,11 @@ class Payload {
 
     fetchJson() {
 
-        console.log(this.__json);
+        // console.log(this.__json);
 
         const one = new Promise<string>((resolve, reject) => {
 
-            const response = fetch(this.__json);
-
-            console.log(response);
-            // fetch(this.__json).then(function (response) {
-            // if (response.status == 200) {
-            //     return response.json();
-            // } else {
-            //     return Promise.reject(response);
-            // }
-            // })
+            // FETCH
 
         }); // end promise
 
