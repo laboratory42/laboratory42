@@ -31,12 +31,43 @@ function start_application() {
 
     fetchJSON('./_app/data/payload.json', '_content');
 
+    fetchJSONArticles('./_app/data/payload.json', '_content');
+
+    //
+    // repos.forEach((repo) => {
+    //   console.log(`{$repo.name} has ${repo.stargazers_count} stars`);
+    // });
+    //
+
 }
 
 
 
 
+function fetchJSONArticles(json) {
 
+    let payload = new Payload(json)
+    payload.fetchJson().then(__result => {
+
+        // let __body = document.getElementById(view);
+        // __body.textContent = __result.payload.body;
+
+        let article = __result.payload.articles;
+
+        for(var i = 0; i < article.length; i++) {
+            console.log(article[i]);
+            console.log(article[i].slug);
+
+            let node = document.createElement("p");
+            var textnode = document.createTextNode(article[i].body);         // Create a text node
+            node.appendChild(textnode);
+
+        } 
+
+
+    });
+
+}
 
 
 

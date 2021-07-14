@@ -1,6 +1,15 @@
 {
 	"payload": {
 		"title": "hello world",
-		"body": "I am the content from payload.json"
+		"body": "I am the content from payload.json",
+		"articles":
+			[
+				{ "_id": "001", "slug": "slug-1", "body": "Regular" },
+				{ "_id": "002", "slug": "slug-2", "body": "Chocolate" },
+				{ "_id": "003", "slug": "slug-3", "body": "Blueberry" },
+				{ "_id": "004", "slug": "slug-4", "body": "Devil's Food" }
+			]
 	}
 }
+
+
