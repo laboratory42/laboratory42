@@ -28,28 +28,22 @@ const url = request.url;
 const method = request.method;
 const credentials = request.credentials;
 
-// console.log(request);
-// console.log(url);
-// console.log(method);
-// console.log(credentials);
-
-
-
-// fetch(request)
-//     .then(response => response.blob())
-//     .then(blob => {
-//         image.src = URL.createObjectURL(blob);
-// });
 let 
     payload,
     title,
     body,
-    articles = {}, 
-    mainObject = {}
+    collection = {}
+    // collection = {}
 ;
 
+// 
+let article_body;
+let article_id;
+let article_slug;
+// let element;
 let element;
 
+        
 
 fetch(request)
     .then(response => {
@@ -61,93 +55,38 @@ fetch(request)
         }
     })
     .then(response => {
-        // console.debug(response);
-
-        // console.log(response);
         payload = response.payload;
         title = response.payload.title;
         body = response.payload.body;
+        collection = response.payload.articles;
 
-        articles = response.payload.articles;
-
-        // theDate = response.date;
-        // allStudents = response.students;
-        // theClass = response.class;
-        mainObject = response;
-        // console.log(mainObject);
-        showObj();
-
-    // ...
-    }).catch(error => {
+        dataToHtml();
+    })
+    .catch(error => {
         console.error(error);
 });
 
 
-function showObj() {
+function dataToHtml() {
 
-    // console.debug(payload);
-    // console.debug(title);
-    // console.debug(body);
+    let arrayLength = collection.length;
 
-    // console.debug(articles);
-
-    // console.log(response);
-    // console.log(theClass);
-    // console.log(restheDateponse);
-    // console.log(response);
-    // console.log(mainObject);
-
-    // console.debug(articles[0]);
-    // console.debug(articles[1]);
-    // console.debug(articles[2]);
-    // console.debug(articles[3]);
-
-    // for(var i = 0; i < articles.length; i++) {
-    //     console.log(articles[i]);
-    //     console.log(articles[i].slug);
-    // } 
-
-    var arrayLength = articles.length;
-
-    // console.debug(arrayLength);
-
-    for (var i = 0; i < arrayLength; i++) {
-
-        // console.debug(articles[i]._id);
-        // console.debug(articles[i].slug);
-        // console.debug(articles[i].body);
-
-        // let nunber = 
-
+    for (let i = 0; i < arrayLength; i++) {
         createElement(i);
-        
-        // const newDiv = document.createElement("div");
-        // const newContent = document.createTextNode(articles[i].body);
-
-        // newDiv.appendChild(newContent[i]);
     }
 
-
-
-
 }
-
 
 function createElement(i) {
         // console.debug(articles[i]._id);
         // console.debug(articles[i].slug);
         // console.debug(articles[i].body);
         let element = document.createElement("div");
-
-        let article_body = document.createTextNode(articles[i].body);
-        let article_id = document.createTextNode(articles[i]._id);
-        let article_slug= document.createTextNode(articles[i].slug);
-
-
-        // let text = article_id.concat(article_slug, article_body);
+        let article_body = document.createTextNode(collection[i].body);
+        let article_id = document.createTextNode(collection[i]._id);
+        let article_slug= document.createTextNode(collection[i].slug);
 
         element.appendChild(article_body)
-        // element.appendChild(articles[i]._id)
         document.body.appendChild(element);
 }
 
