@@ -24,18 +24,8 @@ class Payload {
                     resolve(result);
                 })
                 .catch(function (e) {
-
-                    // var errormessage = {
-                    //     "payload": {
-                    //         "status": "ERROR",
-                    //         "message": e
-                    //     }
-                    // };
-
                     console.warn('Sorry, there is an error.', e);
-
                     //return e;
-
                 })
         })
     }

@@ -54,7 +54,7 @@ function fetchJSONArticles(json) {
 
         let article = __result.payload.articles;
 
-        for(var i = 0; i < article.length; i++) {
+        for (var i = 0; i < article.length; i++) {
             console.log(article[i]);
             console.log(article[i].slug);
 
@@ -62,7 +62,7 @@ function fetchJSONArticles(json) {
             var textnode = document.createTextNode(article[i].body);         // Create a text node
             node.appendChild(textnode);
 
-        } 
+        }
 
 
     });
@@ -99,15 +99,15 @@ const parent = _nav;
 // console.log(parent);
 
 [_nav.children].forEach(child => {
-  console.log('X');
+    console.log('X');
 });
 
 console.log('_____');
 
 const routes = {
-  '/home' : home,
-  '/hire' : hire,
-  '/work' : work
+    '/home': home,
+    '/hire': hire,
+    '/work': work
 };
 
 
@@ -121,35 +121,35 @@ document.addEventListener('click', function (event) {
 
     let path = event.target.getAttribute("href");
 
-            //////
-            const rootDiv2 = document.getElementById('_content');
-            rootDiv2.innerHTML = routes[window.location.pathname];
+    //////
+    const rootDiv2 = document.getElementById('_content');
+    rootDiv2.innerHTML = routes[window.location.pathname];
 
-            const onNavigate = (pathname) => {
-            window.history.pushState(
+    const onNavigate = (pathname) => {
+        window.history.pushState(
             {},
             pathname,
             window.location.origin + pathname
-            )
-            rootDiv2.innerHTML = routes[pathname]
-            console.log(routes[pathname] );
-            }
+        )
+        rootDiv2.innerHTML = routes[pathname]
+        console.log(routes[pathname]);
+    }
 
-            const onNavClick = (pathname) => {
-            window.history.pushState({}, pathname, window.location.origin + pathname);
-            rootDiv2.innerHTML = routes[pathname];
-            }
+    const onNavClick = (pathname) => {
+        window.history.pushState({}, pathname, window.location.origin + pathname);
+        rootDiv2.innerHTML = routes[pathname];
+    }
 
-            window.onpopstate = () => {
-            rootDiv2.innerHTML = routes[window.location.pathname]
-            }
-            //////
+    window.onpopstate = () => {
+        rootDiv2.innerHTML = routes[window.location.pathname]
+    }
+    //////
 
-    
-    // fetchJSON('./_app/data/' + path + '.json', '_content');
+
+    fetchJSON('./_app/data/' + path + '.json', '_content');
 
     // Log the clicked element in the console
-    console.log(event.target.getAttribute("href"));
+    // console.log(event.target.getAttribute("href"));
 
 }, false);
 
